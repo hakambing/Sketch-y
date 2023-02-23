@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch-y</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="sketchy">Sketch-y</h1>
+        <div class="playArea">
+            <div class="sketchBoard" id="sketchBoard">
+                
+            </div>
+
+            <div class="controls">
+                <div class="penColour">
+                    <input type="color" id="Pen" name="Pen" value="#2D2C2C">
+                    <label for="Pen">Pen</label>
+                </div>
+                <div class="bgColour">
+                    <input type="color" id="Bg" name="Bg" value="#FFFFFF">
+                    <label for="Pen">Background</label>
+                </div>
+
+                <div class="toggleRainbow">
+                    <input type="button" value="Toggle Rainbow" id="rainbow" class="rainbow">
+                </div>
+                <div class="toggleEraser">
+                    <input type="button" value="Toggle Eraser" id="eraser" class="eraser">
+                </div>
+                <div class="toggleGridLines">
+                    <input type="button" value="Toggle Grid Lines" id="gridLines" class="gridLines">
+                </div>
+
+                <div class="gridSlider">
+                    <input type="range" min="1" max="24" value="16" id="gridSlider" class="gridSlider">
+                        <!-- oninput="rangeValue.innerText = &quot;Grid Size: &quot; + this.value + &quot; x &quot; + this.value "> -->
+                    <p id="rangeValue">Grid Size: 16 x 16</p>
+                </div>
+
+                <div class="toggleClear">
+                    <input type="button" value="Clear" id="clear" class="clear">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

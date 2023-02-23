@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Julee&display=swap');
+
+* {
+    background-color: #414535;
+    margin: 0;
+    padding: 0;
+    font-family: 'Julee', cursive;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+    margin: 20px;
+}
+
+.sketchy {
+    color: white;
+    font-size: clamp(36px, 10vw, 64px);
+
+}
+
+.sketchBoard {
+    display: grid;
+    background: white;
+    width: clamp(280px, 50vw, 548px);
+    height: clamp(280px, 50vw, 548px);
+    border: 3px solid black;
+}
+
+.playArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+    font-size: 24px;
+}
+
+.penColour,
+.bgColour {
+    display: flex;
+    column-gap: 10px;
+    color: white;
+
+}
+
+.toggleRainbow,
+.toggleEraser,
+.toggleGridLines,
+.toggleClear{
+    width: 183px;
+}
+
+#Pen, #Bg{
+    border: 2px solid black;
+}
+.rainbow,
+.eraser,
+.gridLines,
+.clear{
+    width: 100%;
+    padding:10px;
+    font-size: 24px;
+    background-color: #CACC90;
+    border: 3px solid black;
+}
+
+#rangeValue{
+    font-size: 16px;
+    color: white;
+    text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+    .playArea{
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 132px;
+    }
+    .container{
+        row-gap: 110px;
+        margin-top: 50px;
+    }
+  }
