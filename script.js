@@ -1,24 +1,22 @@
-
 pen_colour = "#2D2C2C";
 penMode = "penMode";
 
 sketchBoard = document.querySelector("#sketchBoard");
 penColour = document.querySelector('#Pen');
-// rainbow = document.getElementById('rainbow');
-// eraser = document.getElementById('eraser');
+rainbow = document.getElementById('rainbow');
+eraser = document.getElementById('eraser');
 gridLines = document.getElementById('gridLines');
 gridSlider = document.querySelector('#gridSliderRange');
-// clear = document.getElementById('clear');
+clear = document.getElementById('clear');
 
-// function setPenMode(newMode) {
+//function for setting the current pen mode (penMode, rainbowMode, eraserMode)
+function setPenMode(newMode) {
+    penMode = newMode;
+    console.log(penMode);
+}
 
-//     penMode = newMode;
-//     console.log(penMode);
-// }
-
-
+//function for toggling between grid lines or no grid lines
 function setGridLines(size) {
-
     if (gridLines.classList.contains("noLines")) {
         setupGrid(size, "noLines");
 
@@ -27,8 +25,7 @@ function setGridLines(size) {
     }
 }
 
-// console.log(penColour);
-
+//function for the setting up of the grid
 function setupGrid(size, lines) {
     sketchBoard.style.gridTemplateColumns = `repeat(${size}, 1fr)`
     sketchBoard.style.gridTemplateRows = `repeat(${size}, 1fr)`
@@ -46,9 +43,7 @@ function setupGrid(size, lines) {
             });
         }
 
-
-        // gridElement.addEventListener('mouseover', changeColor)
-        // gridElement.addEventListener('mousedown', changeColor)
+        gridElement.addEventListener('click', changeColor);
         if (lines == "lines") {
             gridElement.style.border = "1px solid black";
         } else if (lines == "noLines") {
@@ -57,40 +52,45 @@ function setupGrid(size, lines) {
 
         gridElement.style.background = "white";
         sketchBoard.appendChild(gridElement);
-
-        // console.log(penMode);
     }
 
 }
 
-// penColour.addEventListener('input', () => {
-//     pen_colour = penColour.value;
-// });
+//for setting the pen colour
+penColour.addEventListener('input', () => {
+    pen_colour = penColour.value;
+    setPenMode('penMode');
+});
 
-// eraser.onclick = () => setPenMode('eraser');
-gridLines.onclick = () => setGridLines(gridSlider.value,gridLines.classList.toggle('noLines'));
-gridSlider.addEventListener('input', function() {
+rainbow.onclick = () => setPenMode('rainbowMode');
+eraser.onclick = () => setPenMode('eraserMode');
+gridLines.onclick = () => setGridLines(gridSlider.value, gridLines.classList.toggle('noLines'));
+gridSlider.addEventListener('input', function () {
     setGridLines(gridSlider.value);
     document.getElementById("range-value").innerHTML = gridSlider.value + " x " + gridSlider.value;
 })
+clear.onclick = () => setGridLines(gridSlider.value);
 
-
-
+//function for coloring
 function changeColor(e) {
-    // if (e.type === 'mouseover' && !mouseDown) return
-    // if (penMode === 'penMode') {
-    //     gridElement.style.backgroundColor = pen_colour;
-    // // } else if (penMode === 'eraserMode') {
-    // //     gridElement.style.backgroundColor = "#FFFFFF";
-    //  }
+    console.log("poopy");
 
-
+    if (penMode === 'eraserMode') {
+        e.target.style.backgroundColor = "#FFFFFF";
+    } else if (penMode === 'rainbowMode') {
+        const randomR = Math.floor(Math.random() * 256)
+        const randomG = Math.floor(Math.random() * 256)
+        const randomB = Math.floor(Math.random() * 256)
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+    }
+    else if (penMode ==='penMode'){
+        e.target.style.backgroundColor = pen_colour;
+    }
 }
-
-
 
 window.addEventListener("load", (event) => {
     gridSlider.value = 16;
     setGridLines(gridSlider.value);
+    penColour.value = "#2D2C2C";
 })
 
